@@ -3,10 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Nicoletta_laborator3"
         mc:Ignorable="d"
         Title="Pizzeria Colosseo" Height="450" Width="800" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">
-    <Grid>
+    <Grid  MenuItem.Click="PizzaItemsShow_Click">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="471*"/>
             <ColumnDefinition Width="329*"/>
@@ -31,15 +30,15 @@
                 <Label x:Name="lblQuantity" Content="Quantity" Canvas.Top="10" RenderTransformOrigin="2.709,1.418" FontWeight="Normal"/>
                 <TextBox x:Name="txtQuantity" Canvas.Left="64" Canvas.Top="16" Text="0" TextWrapping="Wrap" Width="120" TextAlignment="Right" FontWeight="Normal"/>
                 <Label x:Name="lblType" Content="Type" Canvas.Left="228" Canvas.Top="10" RenderTransformOrigin="1.423,1.624" FontWeight="Normal"/>
-                <ComboBox Canvas.Left="268" Canvas.Top="12" Width="120"/>
+                <ComboBox x:Name="cmbType" Canvas.Left="268" Canvas.Top="12" Width="120" SelectionChanged="cmbType_SelectionChanged"/>
                 <Label x:Name="lblPrice" Content="Price" Canvas.Left="435" Canvas.Top="10" FontWeight="Normal"/>
                 <TextBox x:Name="txtPrice" Canvas.Left="479" Canvas.Top="16" Text="0" TextWrapping="Wrap" Width="120" TextAlignment="Right" IsReadOnly="True" TextChanged="txtPrice_TextChanged" RenderTransformOrigin="1.141,0.62" FontWeight="Normal"/>
                 <ListBox x:Name="lstSale" Height="112" Width="589" Canvas.Top="56" Canvas.Left="10"/>
                 <Label x:Name="lblTotal" Content="Total" Canvas.Left="435" Canvas.Top="178" FontWeight="Bold"/>
                 <TextBox x:Name="txtTotal" Canvas.Left="479" Canvas.Top="182" Text="0" TextWrapping="Wrap" Width="120" TextAlignment="Right" IsReadOnly="True" FontWeight="Normal"/>
-                <Button x:Name="btnAddToSale" Content="Add To Sale" Canvas.Left="633" Canvas.Top="56" FontWeight="Normal" RenderTransformOrigin="0.695,0.619"/>
-                <Button x:Name="btnRemoveItem" Content="Remove Item" Canvas.Left="629" Canvas.Top="92" FontWeight="Normal"/>
-                <Button x:Name="btnCheckOut" Content="Check Out" Canvas.Left="635" Canvas.Top="148"/>
+                <Button x:Name="btnAddToSale" Content="Add To Sale" Canvas.Left="633" Canvas.Top="56" FontWeight="Normal" RenderTransformOrigin="0.695,0.619" Click="btnAddToSale_Click"/>
+                <Button x:Name="btnRemoveItem" Content="Remove Item" Canvas.Left="629" Canvas.Top="92" FontWeight="Normal"  Click="btnRemoveItem_Click"/>
+                <Button x:Name="btnCheckOut" Content="Check Out" Canvas.Left="635" Canvas.Top="148"  Click="btnCheckOut_Click"/>
             </Canvas>
         </GroupBox>
         <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="19" VerticalAlignment="Top"
@@ -61,6 +60,7 @@ Width="81">
                                Click="margPizzaMenuItem_Click" IsCheckable="True"/>
                 </MenuItem>
                 <MenuItem Header="Stop"  x:Name="mnuStop" Click="stopMenuItem_Click"/>
+                <MenuItem Header="Inventory"  Command="ApplicationCommands.Print"/>
             </MenuItem>
         </Menu>
 
